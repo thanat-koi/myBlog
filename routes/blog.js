@@ -18,7 +18,7 @@ router.get('/add', (req, res, next) => {
 })
 
 router.post('/add', [
-    check("name", "Please input your article name").notEmpty(),
+    check("article", "Please input your article name").notEmpty(),
     check("description", "Please input your description").notEmpty(),
     check("author", "Please input your author").notEmpty()
 
@@ -32,16 +32,16 @@ router.post('/add', [
     } else {
         const collection = db.get('blogs');
         collection.insert({
-            name: req.body.name,
-            desription: req.body.desription,
+            article: req.body.article,
+            description: req.body.description,
             author: req.body.author,
 
-        }, (err, blogs) => {
+        }, (err, blog) => {
             if(err) {
                 res.send(err);
             } else {
                 res.location('/blog/add');
-                res.redirec('/blog/add');
+                res.redirect('/blog/add');
             }
         })
     }
