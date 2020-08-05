@@ -40,6 +40,7 @@ router.post('/add', [
             if(err) {
                 res.send(err);
             } else {
+                req.flash("error", "Success");
                 res.location('/blog/add');
                 res.redirect('/blog/add');
             }

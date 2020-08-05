@@ -10,6 +10,7 @@
     <%- include layout %>
     <div class="container">
         <h3 class="center">Add or Writing Blog</h3>
+        <%- messages() %>
         <% if(locals.errors) { %>
             <ul class="alert alert-danger">
                 <% Object.values(errors).forEach(function(error) { %>
@@ -35,6 +36,9 @@
         </form>
 
         <script>
+            $(function() {
+                $('#messages').addClass('alert alert-success');
+            })
             CKEDITOR.replace( 'description' );
         </script>
     </div>
